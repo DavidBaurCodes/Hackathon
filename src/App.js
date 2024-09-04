@@ -87,7 +87,7 @@ function App() {
     setTimeout(() => {
       insertCustomerDataIntoPdf(setPdfUrl, setShowPdf); // Insert customer data and show PDF
       setIsLoading(false); // End loading after "data collection"
-    }, 2000); // Simulate a 2-second loading time
+    }, 3000); // Simulate a 2-second loading time
   };
 
   // Add event listener for right arrow key to simulate dialogue
@@ -117,7 +117,7 @@ function App() {
       <header className="app-header">
         <img width={50} src={logo} alt="logo" />
         <h1>KIBA - KI Beratungs Assistent</h1> {/* Updated Title */}
-        <div className="beraterName">Melanie Müller</div>
+        <div className="beraterName">Melanie Sperling</div>
         <div className="user-icon d-flex justify-content-center align-items-center">
             <i className="fas fa-user"></i>
         </div>
@@ -141,8 +141,8 @@ function App() {
                     <tr>
                       <td>Max</td>
                       <td>Mustermann</td>
-                      <td>05.09.1974</td>
-                      <td>Augustusplatz 1, 04109 Leipzig</td>
+                      <td>01.01.1958</td>
+                      <td>Musterstraße 123, 10115 Berlin</td>
                     </tr>
                   </tbody>
                   </table>
