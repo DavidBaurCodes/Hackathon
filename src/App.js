@@ -154,6 +154,7 @@ function App() {
               {showPflegeantragPopup && <PopUp handleOpenPflegeantrag={handleOpenPflegeantrag} />}
               {showPdf && <PdfViewer pdfUrl={pdfUrl} />}
           </div>
+          {showPdf && <button class="antragBtn">Antrag versenden</button>}
         </div>
 
         {/* Show loading screen when the PDF is being prepared */}
