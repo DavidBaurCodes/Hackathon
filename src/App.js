@@ -24,8 +24,8 @@ function App() {
   };
 
   // Display the message word by word
-  const displayMessageWordByWord = (message) => {
-    const words = message.split(' ');
+  const displayMessageWordByWord = (step) => {
+    const words = step.phrase.split(' ');
     let displayedMessage = '';
     let index = 0;
 
@@ -36,7 +36,7 @@ function App() {
         index++;
       } else {
         clearInterval(typingInterval);
-        addMessage(displayedMessage.trim()); 
+        addMessage(step); 
         // Get the div element
         var container = document.getElementById('messages');
             // Hol das letzte Kind-Element innerhalb des div
@@ -73,7 +73,7 @@ function App() {
     const step = dialogues[currentStep];
     if (step) {
       setIsTyping(true); // Start typing effect
-      displayMessageWordByWord(`${step.role} ${step.name}: ${step.phrase}`);
+      displayMessageWordByWord(step);
       if (step.action) {
         handleAction(step.action);
       }
