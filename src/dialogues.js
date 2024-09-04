@@ -1,9 +1,9 @@
 const dialogues = [
-    { role: 'Kundenberaterin', name: 'Melanie Sperling', phrase: 'Wie kann ich Ihnen weiterhelfen?', action: null },
+    { role: 'Kundenberaterin', name: 'Melanie Sperling', phrase: 'Guten Tag, mein Name ist Frau Sperling. Wie kann ich Ihnen weiterhelfen?', action: null },
     { role: 'Kunde', name: 'Max Mustermann', phrase: 'Ich habe mich letztes Wochenende mit meinem Nachbarn unterhalten und er meinte ich soll einen Pflegeantrag stellen.', action: 'showPopup' },
     { role: 'Kundenberaterin', name: 'Melanie Sperling', phrase: 'Haben Sie bereits einen Pflegegrad?', action: null },
     { role: 'Kunde', name: 'Max Mustermann', phrase: 'Nein, den habe ich noch nicht.', action: 'tickErstantrag' },
-    { role: 'Kundenberaterin', name: 'Melanie Sperling', phrase: 'Ihre Versicherungsdaten sind noch korrekt, oder?', action: null },
+    { role: 'Kundenberaterin', name: 'Melanie Sperling', phrase: 'Ok, dann füllen wir gemeinsam einen Erstantrag aus. Ihre Versicherungsdaten wie Straße und Hausnummer sind noch alle so korrekt oder?', action: null },
     { role: 'Kunde', name: 'Max Mustermann', phrase: 'Ja, genau, da hat sich nichts geändert.', action: null },
     { role: 'Kundenberaterin', name: 'Melanie Sperling', phrase: 'Haben Sie einen Bevollmächtigten oder Betreuer?', action: null },
     { role: 'Kunde', name: 'Max Mustermann', phrase: 'Ja, mein Sohn Matthias. Der sollte im System hinterlegt sein.', action: 'fillBevollmächtigter' },

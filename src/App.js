@@ -38,11 +38,11 @@ function App() {
         clearInterval(typingInterval);
         addMessage(step); 
         // Get the div element
-        var container = document.getElementById('messages');
-            // Hol das letzte Kind-Element innerhalb des div
-        var lastItem = container.lastElementChild;
-            // Scrolle zum letzten Element
-        lastItem.scrollIntoView({ behavior: 'smooth' });
+        // var container = document.getElementById('messages');
+        //     // Hol das letzte Kind-Element innerhalb des div
+        // var lastItem = container.lastElementChild;
+        //     // Scrolle zum letzten Element
+        // lastItem.scrollIntoView({ behavior: 'smooth' });
       }
     }, 180); // Delay between each word
   };
