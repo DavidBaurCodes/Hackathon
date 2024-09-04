@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChatTranscription from './ChatTranscription';
 import PdfViewer from './PdfViewer';
 import PopUp from './PopUp';
@@ -84,6 +84,22 @@ function App() {
     }, 2000); // Simulate a 2-second loading time
   };
 
+  // Add event listener for right arrow key to simulate dialogue
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowRight') {
+        processDialogueStep(); // Trigger next dialogue step on right arrow press
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentStep]); // Depend on currentStep to rebind on step change
+
   // When the user clicks "Ja" on the popup, the PDF will be shown after loading
   const handleOpenPflegeantrag = () => {
     setShowPflegeantragPopup(false);
@@ -93,11 +109,11 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <img width={50} src={logo}/>
+        <img width={50} src={logo} alt="logo" />
         <h1>KIBA - KI Beratungs Assistent</h1> {/* Updated Title */}
         <div className="beraterName">Melanie Müller</div>
-        <div class="user-icon d-flex justify-content-center align-items-center">
-            <i class="fas fa-user"></i>
+        <div className="user-icon d-flex justify-content-center align-items-center">
+            <i className="fas fa-user"></i>
         </div>
       </header>
       <div className="main-content ">
@@ -133,7 +149,6 @@ function App() {
               {showPdf && <PdfViewer pdfUrl={pdfUrl} />}
           </div>
         </div>
-      
 
         {/* Show loading screen when the PDF is being prepared */}
         {isLoading && (
@@ -142,12 +157,6 @@ function App() {
             <div className="spinner"></div>
           </div>
         )}
-        {/* Popup for opening Pflegeantrag */}
-
-        {/* Simulate Next Step */}
-        <div className="simulation-controls">
-          <button onClick={processDialogueStep}>Simulate Next Dialogue</button>
-        </div>
       </div>
     </div>
   );
