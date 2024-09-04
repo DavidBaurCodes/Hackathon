@@ -87,7 +87,7 @@ function App() {
     setTimeout(() => {
       insertCustomerDataIntoPdf(setPdfUrl, setShowPdf); // Insert customer data and show PDF
       setIsLoading(false); // End loading after "data collection"
-    }, 3000); // Simulate a 2-second loading time
+    }, 2000); // Simulate a 2-second loading time
   };
 
   // Add event listener for right arrow key to simulate dialogue
@@ -153,8 +153,10 @@ function App() {
           <div className="col-6">
               {showPflegeantragPopup && <PopUp handleOpenPflegeantrag={handleOpenPflegeantrag} />}
               {showPdf && <PdfViewer pdfUrl={pdfUrl} />}
+              <div className='antragSenden'>              
+                {showPdf && <button class="antragBtn">Antrag versenden</button>}
+              </div>
           </div>
-          {showPdf && <button class="antragBtn">Antrag versenden</button>}
         </div>
 
         {/* Show loading screen when the PDF is being prepared */}

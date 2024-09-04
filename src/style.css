@@ -1,3 +1,12 @@
+
+:root {
+  --main-color: #044CC5;
+}
+
+html{
+  overflow: hidden;
+}
+
 /* General App Layout */
 .app-container {
   font-family: 'Roboto', sans-serif;
@@ -7,12 +16,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  overflow: hidden;
 }
 
 /* Header Section */
 .app-header {
   width: 100%;
-  background-color: #009639; /* Neutral green */
+  background-color: var(--main-color); /* Neutral green */
   display: flex;
   align-items: center;
   justify-content: left;
@@ -28,7 +38,7 @@
     right: 20px;
     width: 40px;
     transform: translateY(-50%);
-    color: #009639;
+    color: var(--main-color);
     height: 40px;
     z-index: 2;
     background-color: #f8f9fa;
@@ -37,15 +47,20 @@
 }
 
 .antragBtn {
-  background-color: #009639;
-  position: absolute;
-  bottom: 10px;
-  right: 247px;
+  background-color: var(--main-color);
   width: 200px;
   height: 50px;
   color: white;
   border-radius: 10px;
   border: none;
+}
+
+.antragSenden
+{
+  padding-top:2px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .beraterName
@@ -118,7 +133,7 @@ th ,td{
   color: white; /* Green for the advisor */
   margin-bottom: 10px;
   font-weight: bold;
-  background-color: #009639;
+  background-color: var(--main-color);
   padding: 8px;
   border-radius: 0px 10px 10px 10px;
   float:left;
@@ -190,7 +205,7 @@ th ,td{
 
 .pflegeantrag-popup button {
   padding: 10px 20px;
-  background-color: #009639;
+  background-color: var(--main-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -198,7 +213,7 @@ th ,td{
 }
 
 .pflegeantrag-popup button:hover {
-  background-color: #007f32;
+  background-color: var(--main-color);
 }
 
 /* Simulation Controls */
@@ -208,7 +223,7 @@ th ,td{
 
 .simulation-controls button {
   padding: 10px 20px;
-  background-color: #009639;
+  background-color: var(--main-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -216,7 +231,7 @@ th ,td{
 }
 
 .simulation-controls button:hover {
-  background-color: #007f32;
+  background-color: var(--main-color);
 }
 
 /* Scrollbar for chat */
@@ -271,7 +286,7 @@ th ,td{
   width: 50px;
   height: 50px;
   border: 5px solid #ccc;
-  border-top-color: #009639;
+  border-top-color: var(--main-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
