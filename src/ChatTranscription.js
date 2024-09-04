@@ -13,7 +13,24 @@ const ChatTranscription = ({ messages, isTyping, currentMessage }) => {
           </div>
 
         ))}
-        {isTyping && <div>{currentMessage}</div>}
+        {isTyping &&
+        (messages.length<=0?
+          <div>
+              {<div className='beraterLbl'>Kundenberaterin: Melanie Sperling</div>}
+            <div className={'advisor-message'}>
+              {currentMessage}
+            </div>   
+          </div>
+      :
+          <div>
+            {messages.length % 2 != 0? <div className='kundeLbl'>Kunde: Max Mustermann</div>:<div className='beraterLbl'>Kundenberaterin: Melanie Sperling</div>}
+            <div className={messages.length % 2 == 0 ? 'advisor-message' : 'customer-message'}>
+            {currentMessage}
+            </div>   
+          </div>
+        )
+        }
+        <div className="spacing"></div>
       </div>
     </div>
   );
