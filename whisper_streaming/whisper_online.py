@@ -5,6 +5,8 @@ import librosa
 from functools import lru_cache
 import time
 import logging
+import keyboard
+
 
 import io
 import soundfile as sf
@@ -13,6 +15,7 @@ import kiba_backend
 
 
 logger = logging.getLogger(__name__)
+logger.debug = lambda *a: None
 
 SEND_TO_LLM = True
 
@@ -346,6 +349,7 @@ class OnlineASRProcessor:
         self.commited = []
 
         self.whole_conversation = []
+        self.actions = []
 
     def insert_audio_chunk(self, audio):
         self.audio_buffer = np.append(self.audio_buffer, audio)
@@ -393,17 +397,26 @@ class OnlineASRProcessor:
 
         if completed[2]:
             self.whole_conversation.append(completed[2])
-            if SEND_TO_LLM:
-                result_from_llm = kiba_backend.process_conversation(self.whole_conversation)
-                print('>>>> RESULT FROM LLM >>>>')
-                print(result_from_llm)
-                if 'ACTION=' in result_from_llm:
-                    action = result_from_llm.split('ACTION=')[1].split('\n')[0].split(';')[0]
-                    result_from_action = kiba_backend.carry_out_HIL_action(action)
-                    print('>>>> RESULT FROM ACTION >>>>')
-                    print(result_from_action)
+            if len(''.join(self.whole_conversation)) > 50:
+                result_from_llm = kiba_backend.process_conversation(self.whole_conversation, actions=self.actions)
+                # print('>>>> RESULT FROM LLM >>>>')
+                # print(result_from_llm)
 
-        input()
+                action = None
+                if 'ACTION:' in result_from_llm:
+                    action = result_from_llm.split('ACTION:')[1].split('\n')[0].split(';')[0].strip(' ')
+
+                if 'ACTION' in open('/tmp/model_input.txt').read():
+                    action = open('/tmp/model_input.txt').read().split('ACTION:')[1].split('\n')[0].split(';')[0].strip(' ')
+                    with open('/tmp/model_input.txt', 'w') as f:
+                        f.write('')
+                    
+                    if action not in self.actions:
+                        self.actions.append(action)
+                    result_from_llm = kiba_backend.process_conversation(
+                        self.whole_conversation,
+                        actions=self.actions)
+                        
 
         the_rest = self.to_flush(self.transcript_buffer.complete())
         logger.debug(f"INCOMPLETE: {the_rest}")
