@@ -3,7 +3,7 @@ import React from 'react';
 const ChatTranscription = ({ messages, isTyping, currentMessage }) => {
   return (
     <div className="chat-box">
-      <div className="messages">
+      <div id="messages" className="messages">
         {messages.map((msg, index) => (
           <div key={index}>
             <div className='beraterLbl'>{msg.includes('Kundenberater') ? 'Kundenberater' : ''}</div>

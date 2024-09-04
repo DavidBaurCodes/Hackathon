@@ -36,9 +36,15 @@ function App() {
         index++;
       } else {
         clearInterval(typingInterval);
-        addMessage(displayedMessage.trim()); // Add full message to the chat
+        addMessage(displayedMessage.trim()); 
+        // Get the div element
+        var container = document.getElementById('messages');
+            // Hol das letzte Kind-Element innerhalb des div
+        var lastItem = container.lastElementChild;
+            // Scrolle zum letzten Element
+        lastItem.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 200); // Delay between each word
+    }, 180); // Delay between each word
   };
 
   // Handle actions triggered by specific dialogues
