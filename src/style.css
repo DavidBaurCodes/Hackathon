@@ -6,6 +6,10 @@
 html{
   overflow: hidden;
 }
+.spacing
+{
+  height:50px;
+}
 
 /* General App Layout */
 .app-container {
