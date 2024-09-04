@@ -146,6 +146,10 @@ function App() {
                     </tr>
                   </tbody>
                   </table>
+                  <div className="kundenZustim">
+                    <input checked="true" type="checkbox" id="zustimmung" name="zustimmung"></input>
+                    <label className='zText' for="zustimmung"> Der Kunde hat der Verarbeitung der personenbezogenen Daten zugestimmt</label>
+                  </div>
                 </div>
             </div>
             <ChatTranscription messages={messages} isTyping={isTyping} currentMessage={currentMessage} /> 

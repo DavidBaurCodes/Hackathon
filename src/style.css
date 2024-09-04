@@ -103,12 +103,23 @@ html{
 .kundenInfos{
   background-color: white;
   max-height: 500px;
-  height: 130px;
+  height: 150px;
   border-radius: 10px;
   border: 1px solid #ccc;
   padding: 20px;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.kundenZustim{
+  margin-top: 5px;
+  font-size: 14px;
+  color: grey;
+
+}
+
+.zText{
+  margin-left:5px;
 }
 
 th ,td{
